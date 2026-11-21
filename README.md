@@ -72,3 +72,32 @@ Each core folder carries a `NOTICE.md` naming the upstream project, license
 (SPDX) and attribution. These are third-party cores — all rights belong to
 their upstream authors; the per-core license terms govern the binaries. The
 upstream license text also ships inside every tarball.
+
+## Adding a new core version
+
+The repo is self-guarding: `scripts/conformance.sh` validates **every
+published release** against the contract (tag shape `<core>-v<2-or-3-segment
+numeric semver>`; asset names `<core>-<os>-<arch>.tar.gz` with the store's
+os/arch enums; a `.sig` companion per tarball that decodes to a 64-byte
+ed25519 signature; manifest ⇄ release parity both ways including per-asset
+sha256; a `NOTICE.md` per core folder; no binaries in the git tree). It
+fails loud — one `CONFORMANCE FAIL:` line per violation, exit 1 — and is
+strictly read-only.
+
+The publish flow for core `X` version `N+1`:
+
+1. **manifest update** — add the new `versions` row (tag `X-vN+1`, per-arch
+   asset name + sha256) to `X/MANIFEST.json` (informational index first,
+   so the gate can prove parity the moment the release lands);
+2. **release publish** — tag `X-vN+1` with assets `X-linux-<arch>.tar.gz`
+   (+ `.sig` companions, signed by the engine-artifact key) for every arch
+   the core ships, byte-identical to the artifact store;
+3. **conformance green** — run `scripts/conformance.sh` (fetches the live
+   releases via `gh`; or prefetch and set `CORES_RELEASES_JSON` +
+   `CORES_SIG_CACHE_DIR` for offline runners). `CONFORMANCE: all checks
+   green` = done; anything else names the drift.
+
+`CORES_DIR`, `CORES_RELEASES_JSON`, `CORES_SIG_CACHE_DIR` also make the
+gate runnable against a local fixture (used for its mutation proof — see
+CORES-3-REPORT) — a fixture tree without git simply skips check (f), loudly.
+
