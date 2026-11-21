@@ -1,0 +1,21 @@
+{
+  "core": "gost",
+  "upstream": "https://github.com/go-gost/gost",
+  "license": "MIT",
+  "latest": "3.3.3",
+  "versions": [
+    {
+      "tag": "gost-v3.3.3",
+      "assets": {
+        "linux-amd64": {
+          "name": "gost-linux-amd64.tar.gz",
+          "sha256": "ca03d2a2fda2bd5003c91ac3e41e365715b8d077b283ff81469c5ab413ce769a"
+        },
+        "linux-arm64": {
+          "name": "gost-linux-arm64.tar.gz",
+          "sha256": "37bafec8eb72fe69ba1cde56083389c2994a36c6e17874e8d5c1ce1a0b6a7ef2"
+        }
+      }
+    }
+  ]
+}

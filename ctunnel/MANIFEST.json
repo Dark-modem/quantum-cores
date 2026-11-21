@@ -1,0 +1,21 @@
+{
+  "core": "ctunnel",
+  "upstream": "https://github.com/CIAUB/C-Tunnel",
+  "license": "AGPL-3.0",
+  "latest": "1.1.1",
+  "versions": [
+    {
+      "tag": "ctunnel-v1.1.1",
+      "assets": {
+        "linux-amd64": {
+          "name": "ctunnel-linux-amd64.tar.gz",
+          "sha256": "041d946fde8473c180b371892512fefdce641673b89bc6e73aad0992ffaeac85"
+        },
+        "linux-arm64": {
+          "name": "ctunnel-linux-arm64.tar.gz",
+          "sha256": "812b15e46dbc2940ec43dbc8cd7fdec0c5d90c36a0f6de4ead80ff523418e4d9"
+        }
+      }
+    }
+  ]
+}

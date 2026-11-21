@@ -1,0 +1,21 @@
+{
+  "core": "chisel",
+  "upstream": "https://github.com/jpillora/chisel",
+  "license": "MIT",
+  "latest": "1.10.1",
+  "versions": [
+    {
+      "tag": "chisel-v1.10.1",
+      "assets": {
+        "linux-amd64": {
+          "name": "chisel-linux-amd64.tar.gz",
+          "sha256": "10a463a8caf47ea88707f72dd06eb0863df27770dcbd3bb1f7b120d25d531e5f"
+        },
+        "linux-arm64": {
+          "name": "chisel-linux-arm64.tar.gz",
+          "sha256": "9b965a1ebc0829129452ed7e385f46cb83baf33ac8723cf7f1f631e122098931"
+        }
+      }
+    }
+  ]
+}

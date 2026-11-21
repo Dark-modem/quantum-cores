@@ -1,0 +1,21 @@
+{
+  "core": "wstunnel",
+  "upstream": "https://github.com/erebe/wstunnel",
+  "license": "BSD-3-Clause",
+  "latest": "10.1.9",
+  "versions": [
+    {
+      "tag": "wstunnel-v10.1.9",
+      "assets": {
+        "linux-amd64": {
+          "name": "wstunnel-linux-amd64.tar.gz",
+          "sha256": "1834b8338ccdc667db6e0bbc4bd420ea14e1f81f6081f7e17d1218bf003aced2"
+        },
+        "linux-arm64": {
+          "name": "wstunnel-linux-arm64.tar.gz",
+          "sha256": "73988185b72f03d6fac75c1e048ee65d8394e5847f972016897f97cccc353837"
+        }
+      }
+    }
+  ]
+}
