@@ -13,3 +13,7 @@ artifacts/
 # editor/OS noise
 Thumbs.db
 .DS_Store
+
+# python bytecode caches (dev noise; COMMITTED bytecode fails the conformance gate)
+__pycache__/
+*.pyc
