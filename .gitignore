@@ -1,0 +1,15 @@
+# NO BINARIES IN GIT — binaries exist only as release assets.
+*.tar.gz
+*.zip
+*.tgz
+*.sig
+*.b64
+*.sha256
+*.exe
+bin/
+dist/
+out/
+artifacts/
+# editor/OS noise
+Thumbs.db
+.DS_Store
