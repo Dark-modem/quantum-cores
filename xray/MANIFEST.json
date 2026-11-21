@@ -1,0 +1,21 @@
+{
+  "core": "xray",
+  "upstream": "https://github.com/XTLS/Xray-core",
+  "license": "MPL-2.0",
+  "latest": "24.12.31",
+  "versions": [
+    {
+      "tag": "xray-v24.12.31",
+      "assets": {
+        "linux-amd64": {
+          "name": "xray-linux-amd64.tar.gz",
+          "sha256": "b18b92c6bf39af7c639ec0667c8bceec76d0bbe478bd1b7d332b239a61e19a0f"
+        },
+        "linux-arm64": {
+          "name": "xray-linux-arm64.tar.gz",
+          "sha256": "6fd6a1979504fe1eba7bc664799caa41cd40308836e62954d09d83b68c1e6dc2"
+        }
+      }
+    }
+  ]
+}

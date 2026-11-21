@@ -1,0 +1,21 @@
+{
+  "core": "rathole",
+  "upstream": "https://github.com/rapiz1/rathole",
+  "license": "Apache-2.0",
+  "latest": "0.5.0",
+  "versions": [
+    {
+      "tag": "rathole-v0.5.0",
+      "assets": {
+        "linux-amd64": {
+          "name": "rathole-linux-amd64.tar.gz",
+          "sha256": "b8081560756a1b65c40f6b87f718186f34f19e8ecba15522281a1de385401b57"
+        },
+        "linux-arm64": {
+          "name": "rathole-linux-arm64.tar.gz",
+          "sha256": "fb40ce69fb91c243a4f1113d5fdfea729ee5e6c36e7028961ad788fd7b28c874"
+        }
+      }
+    }
+  ]
+}

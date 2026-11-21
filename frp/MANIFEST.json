@@ -1,0 +1,21 @@
+{
+  "core": "frp",
+  "upstream": "https://github.com/fatedier/frp",
+  "license": "Apache-2.0",
+  "latest": "0.61.1",
+  "versions": [
+    {
+      "tag": "frp-v0.61.1",
+      "assets": {
+        "linux-amd64": {
+          "name": "frp-linux-amd64.tar.gz",
+          "sha256": "9fb8bdbb7b96c80d81add5f11565483558c88ec7aa59237559c3d3c28eec21b5"
+        },
+        "linux-arm64": {
+          "name": "frp-linux-arm64.tar.gz",
+          "sha256": "ec6330ee780f3d67697ad7f0387fc816b15330795c558674ecb272b40149058f"
+        }
+      }
+    }
+  ]
+}
