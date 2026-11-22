@@ -1,0 +1,235 @@
+{
+ "core": "waterwall",
+ "upstream": "https://github.com/radkesvat/WaterWall",
+ "license": "MPL-2.0",
+ "latest": "1.6.0",
+ "versions": [
+  {
+   "tag": "waterwall-v1.6.0",
+   "assets": {
+    "linux-amd64": {
+     "name": "waterwall-linux-amd64.tar.gz",
+     "sha256": "63facedcd912de7c37145cfb24505331ef1fd074fb1481c4b8736d3a0f56caa2"
+    }
+   }
+  }
+ ],
+ "methods": [
+  {
+   "id": 1,
+   "name": "quic",
+   "title": "QUIC tunnel (Chromium quiche; client/server pairs)",
+   "layer": "L4",
+   "transport": "udp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 2,
+   "name": "kcp",
+   "title": "KCP tunnel (udp, fast retransmit)",
+   "layer": "L4",
+   "transport": "udp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 3,
+   "name": "enet",
+   "title": "ENet tunnel (reliable-udp, game-grade)",
+   "layer": "L4",
+   "transport": "udp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 4,
+   "name": "reality",
+   "title": "REALITY-steeled tunnel (anti-probing)",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": false,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 5,
+   "name": "trojan",
+   "title": "Trojan tunnel",
+   "layer": "L4",
+   "transport": "tcp+tls",
+   "ipver": "both",
+   "needs_port": false,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 6,
+   "name": "vless",
+   "title": "VLESS tunnel",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": false,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 7,
+   "name": "vmess",
+   "title": "VMess tunnel",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": false,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 8,
+   "name": "wireguard",
+   "title": "WireGuard tunnel transport",
+   "layer": "L4",
+   "transport": "udp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 9,
+   "name": "rtmp",
+   "title": "RTMP-shaped tunnel (media camouflage)",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": false,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 10,
+   "name": "gns",
+   "title": "GNS-shaped tunnel",
+   "layer": "L4",
+   "transport": "udp",
+   "ipver": "both",
+   "needs_port": false,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 11,
+   "name": "bgp4",
+   "title": "BGP4-shaped tunnel",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": false,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 12,
+   "name": "http",
+   "title": "HTTP-shaped tunnel (plain camouflage)",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": false,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 13,
+   "name": "socks5",
+   "title": "SOCKS5 ingress/egress",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": false,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 14,
+   "name": "fake-tcp",
+   "title": "FakeTcpHeader camouflage layer",
+   "layer": "L4",
+   "transport": "raw-ip",
+   "ipver": "both",
+   "needs_port": false,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 15,
+   "name": "obfuscator",
+   "title": "packet obfuscation layer (JunkDatagram + Disturber companions)",
+   "layer": "L4",
+   "transport": "udp",
+   "ipver": "both",
+   "needs_port": false,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 16,
+   "name": "connection-fisher",
+   "title": "ConnectionFisher anti-analysis decoy pair",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": false,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 17,
+   "name": "connection-stripe",
+   "title": "ConnectionStripe multi-path split layer",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": false,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 18,
+   "name": "mux",
+   "title": "stream multiplexing layer",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": false,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  }
+ ]
+}
