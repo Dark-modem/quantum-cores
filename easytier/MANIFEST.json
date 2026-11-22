@@ -1,0 +1,35 @@
+{
+ "core": "easytier",
+ "upstream": "https://github.com/EasyTier/EasyTier",
+ "license": "LGPL-3.0",
+ "latest": "2.7.1",
+ "versions": [
+  {
+   "tag": "easytier-v2.7.1",
+   "assets": {
+    "linux-amd64": {
+     "name": "easytier-linux-amd64.tar.gz",
+     "sha256": "b13772b9cf61f107c2e67fd7f859fe6705fac14164a7a14024f5a3b94c3d8662"
+    },
+    "linux-arm64": {
+     "name": "easytier-linux-arm64.tar.gz",
+     "sha256": "fa58c183f98a7ebec8551765d834d1021d81eb3a087c47cad0e019eb7817d56b"
+    }
+   }
+  }
+ ],
+ "methods": [
+  {
+   "id": 1,
+   "name": "easytier-mesh",
+   "title": "EasyTier mesh VPN — L3 TUN overlay joining peers by network-name + network-secret (carriers tcp|udp|wg|ws|wss|quic|faketcp|ring; DHCP or static node IPs; public shared node / external-node discovery; subnet export via proxy-networks; config-server udp|tcp|ws|wss with easytier-web)",
+   "layer": "L3",
+   "transport": "tcp|udp|wg|ws|wss|quic|faketcp|ring",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "mesh"
+  }
+ ]
+}
