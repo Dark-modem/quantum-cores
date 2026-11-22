@@ -5,6 +5,9 @@
 #   (a) tag shape <core>-v<2-or-3-segment numeric semver> — udp2raw calver is
 #       legal; suffixed / non-numeric / no-v refused. Byte-identical to the
 #       panel's coresTagRe (quantum-panel d692ef2 cores_discovery.go:51).
+#       CORES-6 exception: naive additionally admits its VERBATIM upstream
+#       Chromium shape naive-v<4 numeric segments>-<respins> (naive-only,
+#       documented in conformance.py NAIVE_TAG_RE; panel mirror pending).
 #   (b) asset names <core>-<os>-<arch>.tar.gz with the artifacts-store enums
 #       (os=linux, arch amd64|arm64) + .sig companions named <asset>.sig.
 #   (c) every tarball has a .sig companion that decodes to a 64-byte ed25519
