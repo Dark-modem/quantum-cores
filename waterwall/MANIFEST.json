@@ -10,6 +10,10 @@
     "linux-amd64": {
      "name": "waterwall-linux-amd64.tar.gz",
      "sha256": "63facedcd912de7c37145cfb24505331ef1fd074fb1481c4b8736d3a0f56caa2"
+    },
+    "linux-arm64": {
+     "name": "waterwall-linux-arm64.tar.gz",
+     "sha256": "0efa4f7de2008cc5f518b20db5c76388e53428a05e860b6958b076ee3b08fbe4"
     }
    }
   }
