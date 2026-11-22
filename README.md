@@ -77,7 +77,11 @@ upstream license text also ships inside every tarball.
 
 The repo is self-guarding: `scripts/conformance.sh` validates **every
 published release** against the contract (tag shape `<core>-v<2-or-3-segment
-numeric semver>`; asset names `<core>-<os>-<arch>.tar.gz` with the store's
+numeric semver>` — with the CORES-6 naive exception: the `naive` core
+additionally admits its VERBATIM upstream Chromium shape
+`naive-v<4 numeric segments>-<respins>`, e.g. `naive-v154.0.8037.49-5`,
+documented in `conformance.py`/`naive/NOTICE.md`, panel mirror pending;
+asset names `<core>-<os>-<arch>.tar.gz` with the store's
 os/arch enums; a `.sig` companion per tarball that decodes to a 64-byte
 ed25519 signature; manifest ⇄ release parity both ways including per-asset
 sha256; a `NOTICE.md` per core folder; no binaries in the git tree). It

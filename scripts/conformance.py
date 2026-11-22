@@ -21,12 +21,37 @@ import os
 import re
 import sys
 
-# The ONLY tag shape — byte-identical to the panel's coresTagRe
+# The tag shape — byte-identical to the panel's coresTagRe
 # (quantum-panel d692ef2 internal/panel/cores_discovery.go:51, TestCoresTagShape):
 # 2-or-3 numeric segments (frp-v0.61.1, udp2raw-v20230206.0 calver);
 # suffixed / non-numeric / no-v refused; anchored so a parsed tag can never
 # carry path separators or spaces into a download URL.
 CORE_TAG_RE = re.compile(r"^([a-z][a-z0-9_-]*)-v(\d+\.\d+(\.\d+)?)$")
+
+# CORES-6 tag-contract exception (architect's CORES-6 dispatch, 2026-11-23,
+# executing the human's "ADD ALL remaining methods" order that D2 staged):
+# naive mirrors its upstream klzgrad/naiveproxy tags VERBATIM — Chromium
+# versions v<major>.<build>.<branch>.<patch>-<respins>, e.g. v154.0.8037.49-5
+# (4 numeric segments + a re-spin suffix). A lossy mapping (naive-v154.0) was
+# REFUSED per the paqet precedent: it collides within the Chromium
+# major/re-spin and misidentifies the artifact. NAIVE-ONLY: every other core
+# still must match CORE_TAG_RE. The shape stays digits+dots+one dash — no
+# separators, no spaces, URL-safe by construction (the CORE_TAG_RE safety
+# argument holds). KNOWN DIVERGENCE: the panel's coresTagRe does not accept
+# this shape yet, so naive releases are invisible to the §2.22 feed until
+# the panel mirrors this exception (flagged in 00-ADMIN/CORES-6-REPORT.md —
+# a panel one-liner with gates; the panel's coresVersionCompare already
+# treats non-digits+dots versions as honest-unknown, outdated=null).
+NAIVE_TAG_RE = re.compile(r"^(naive)-v(\d+\.\d+\.\d+\.\d+-\d+)$")
+
+
+def tag_shape(tag):
+    """Return the regex match for a contract-shaped tag: the general
+    CORE_TAG_RE, or the naive Chromium exception. None = refused."""
+    m = CORE_TAG_RE.match(tag)
+    if m:
+        return m
+    return NAIVE_TAG_RE.match(tag)
 
 # Asset contract shapes with the artifacts-store os/arch enums (the store
 # packs linux only; arch names are Go arch names, matching the packs).
@@ -111,9 +136,9 @@ def main():
             print("CONFORMANCE INFO: draft release skipped: %s" % r.get("tag_name", "?"))
             continue
         tag = r.get("tag_name", "")
-        m = CORE_TAG_RE.match(tag)
+        m = tag_shape(tag)
         if not m:
-            FAIL("(a) release tag %r is not contract-shaped <core>-v<2-or-3-segment numeric semver>" % tag)
+            FAIL("(a) release tag %r is not contract-shaped <core>-v<2-or-3-segment numeric semver> (naive may additionally use its documented Chromium shape)" % tag)
             continue
         live_tags[tag] = (m.group(1), r)
 
@@ -185,7 +210,7 @@ def main():
             FAIL("(d) %s/MANIFEST.json core field %r != folder name" % (core, mf.get("core")))
         for v in mf.get("versions") or []:
             vt = v.get("tag", "")
-            if not CORE_TAG_RE.match(vt):
+            if not tag_shape(vt):
                 FAIL("(a) %s/MANIFEST.json version tag %r is not contract-shaped" % (core, vt))
             if vt not in live_tags:
                 FAIL("(d) %s/MANIFEST.json version %s has no live release" % (core, vt))
