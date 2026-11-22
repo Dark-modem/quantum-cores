@@ -1,21 +1,95 @@
 {
-  "core": "rathole",
-  "upstream": "https://github.com/rapiz1/rathole",
-  "license": "Apache-2.0",
-  "latest": "0.5.0",
-  "versions": [
-    {
-      "tag": "rathole-v0.5.0",
-      "assets": {
-        "linux-amd64": {
-          "name": "rathole-linux-amd64.tar.gz",
-          "sha256": "b8081560756a1b65c40f6b87f718186f34f19e8ecba15522281a1de385401b57"
-        },
-        "linux-arm64": {
-          "name": "rathole-linux-arm64.tar.gz",
-          "sha256": "fb40ce69fb91c243a4f1113d5fdfea729ee5e6c36e7028961ad788fd7b28c874"
-        }
-      }
+ "core": "rathole",
+ "upstream": "https://github.com/rapiz1/rathole",
+ "license": "Apache-2.0",
+ "latest": "0.5.0",
+ "versions": [
+  {
+   "tag": "rathole-v0.5.0",
+   "assets": {
+    "linux-amd64": {
+     "name": "rathole-linux-amd64.tar.gz",
+     "sha256": "b8081560756a1b65c40f6b87f718186f34f19e8ecba15522281a1de385401b57"
+    },
+    "linux-arm64": {
+     "name": "rathole-linux-arm64.tar.gz",
+     "sha256": "fb40ce69fb91c243a4f1113d5fdfea729ee5e6c36e7028961ad788fd7b28c874"
     }
-  ]
+   }
+  }
+ ],
+ "methods": [
+  {
+   "id": 1,
+   "name": "tcp-service",
+   "title": "reverse TCP forwarding (type=tcp default)",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 2,
+   "name": "udp-service",
+   "title": "reverse UDP forwarding (type=udp per service)",
+   "layer": "L4",
+   "transport": "udp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 3,
+   "name": "noise",
+   "title": "Noise_NK_25519_ChaChaPoly_BLAKE2s encrypted carrier over TCP",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 4,
+   "name": "tcp-carrier",
+   "title": "plain TCP carrier (transport type tcp)",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 5,
+   "name": "tls-carrier",
+   "title": "TLS carrier - requires operator cert/key on both ends",
+   "layer": "L4",
+   "transport": "tcp+tls",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 6,
+   "name": "websocket-carrier",
+   "title": "websocket carrier; tls=false = plain ws, tls=true rides the TLS block",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  }
+ ]
 }

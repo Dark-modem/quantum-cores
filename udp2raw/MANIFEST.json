@@ -1,17 +1,67 @@
 {
-  "core": "udp2raw",
-  "upstream": "https://github.com/wangyu-/udp2raw",
-  "license": "MIT",
-  "latest": "20230206.0",
-  "versions": [
-    {
-      "tag": "udp2raw-v20230206.0",
-      "assets": {
-        "linux-amd64": {
-          "name": "udp2raw-linux-amd64.tar.gz",
-          "sha256": "a5a371957f9dccbb9de7d4c280378eba29f257b07412e790aeb3c9a202e9d7f6"
-        }
-      }
+ "core": "udp2raw",
+ "upstream": "https://github.com/wangyu-/udp2raw",
+ "license": "MIT",
+ "latest": "20230206.0",
+ "versions": [
+  {
+   "tag": "udp2raw-v20230206.0",
+   "assets": {
+    "linux-amd64": {
+     "name": "udp2raw-linux-amd64.tar.gz",
+     "sha256": "a5a371957f9dccbb9de7d4c280378eba29f257b07412e790aeb3c9a202e9d7f6"
     }
-  ]
+   }
+  }
+ ],
+ "methods": [
+  {
+   "id": 1,
+   "name": "faketcp",
+   "title": "UDP disguised as raw TCP SYN/ACK/FIN packets (our companion's mode)",
+   "layer": "L4",
+   "transport": "raw-ip",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 2,
+   "name": "easyfaketcp",
+   "title": "faketcp with tcp dummy socket (use_tcp_dummy_socket=1)",
+   "layer": "L4",
+   "transport": "raw-ip",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 3,
+   "name": "udp-raw",
+   "title": "raw UDP mode (no disguise, lowest overhead)",
+   "layer": "L4",
+   "transport": "raw-ip",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 4,
+   "name": "icmp",
+   "title": "UDP disguised as ICMP echo (the sealed-carrier shape)",
+   "layer": "L4",
+   "transport": "icmp",
+   "ipver": "both",
+   "needs_port": false,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  }
+ ]
 }

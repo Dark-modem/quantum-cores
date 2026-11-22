@@ -1,21 +1,215 @@
 {
-  "core": "frp",
-  "upstream": "https://github.com/fatedier/frp",
-  "license": "Apache-2.0",
-  "latest": "0.61.1",
-  "versions": [
-    {
-      "tag": "frp-v0.61.1",
-      "assets": {
-        "linux-amd64": {
-          "name": "frp-linux-amd64.tar.gz",
-          "sha256": "9fb8bdbb7b96c80d81add5f11565483558c88ec7aa59237559c3d3c28eec21b5"
-        },
-        "linux-arm64": {
-          "name": "frp-linux-arm64.tar.gz",
-          "sha256": "ec6330ee780f3d67697ad7f0387fc816b15330795c558674ecb272b40149058f"
-        }
-      }
+ "core": "frp",
+ "upstream": "https://github.com/fatedier/frp",
+ "license": "Apache-2.0",
+ "latest": "0.61.1",
+ "versions": [
+  {
+   "tag": "frp-v0.61.1",
+   "assets": {
+    "linux-amd64": {
+     "name": "frp-linux-amd64.tar.gz",
+     "sha256": "9fb8bdbb7b96c80d81add5f11565483558c88ec7aa59237559c3d3c28eec21b5"
+    },
+    "linux-arm64": {
+     "name": "frp-linux-arm64.tar.gz",
+     "sha256": "ec6330ee780f3d67697ad7f0387fc816b15330795c558674ecb272b40149058f"
     }
-  ]
+   }
+  }
+ ],
+ "methods": [
+  {
+   "id": 1,
+   "name": "proxy-tcp",
+   "title": "plain TCP proxy (our driver's only shape today)",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 2,
+   "name": "proxy-udp",
+   "title": "UDP proxy",
+   "layer": "L4",
+   "transport": "udp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 3,
+   "name": "proxy-http",
+   "title": "HTTP reverse proxy with vhost routing",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 4,
+   "name": "proxy-https",
+   "title": "HTTPS reverse proxy with vhost",
+   "layer": "L4",
+   "transport": "tcp+tls",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 5,
+   "name": "proxy-tcpmux",
+   "title": "TCP mux with httpConnect (multiplexed by hostname)",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 6,
+   "name": "proxy-stcp",
+   "title": "secret TCP - visitors need the secretKey",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 7,
+   "name": "proxy-xtcp",
+   "title": "P2P hole-punching proxy",
+   "layer": "L4",
+   "transport": "udp+p2p",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 8,
+   "name": "proxy-sudp",
+   "title": "secret UDP",
+   "layer": "L4",
+   "transport": "udp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 9,
+   "name": "visitor-stcp",
+   "title": "stcp visitor (binds local port on the visitor end)",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 10,
+   "name": "visitor-xtcp",
+   "title": "xtcp visitor (p2p hole punch client side)",
+   "layer": "L4",
+   "transport": "udp+p2p",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 11,
+   "name": "visitor-sudp",
+   "title": "sudp visitor",
+   "layer": "L4",
+   "transport": "udp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 12,
+   "name": "transport-tcp",
+   "title": "client-server control+data over plain TCP",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 13,
+   "name": "transport-kcp",
+   "title": "KCP transport (lossy-link friendly)",
+   "layer": "L4",
+   "transport": "udp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 14,
+   "name": "transport-quic",
+   "title": "QUIC transport",
+   "layer": "L4",
+   "transport": "udp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 15,
+   "name": "transport-websocket",
+   "title": "websocket transport",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 16,
+   "name": "transport-wss",
+   "title": "websocket over TLS transport",
+   "layer": "L4",
+   "transport": "tcp+tls",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  }
+ ]
 }
