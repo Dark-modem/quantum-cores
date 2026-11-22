@@ -22,3 +22,15 @@ ed25519 key (see `README.md` — M2 invariant).
 
 - none recorded at pack time for 24.12.31 (linux-amd64 + linux-arm64 both
   packed and verified).
+
+## OVERNIGHT-A5 upgrade (2026-11-23)
+
+`xray-v26.3.27` joins the manifest as `latest` (v24.12.31 stays published for
+legacy agents). Repackage of the UPSTREAM release assets — Xray-linux-64.zip
+(sha256 23cd9af9…) and Xray-linux-arm64-v8a.zip (sha256 4d30283a…), both
+digest-verified against the GitHub API digest field AND the upstream .dgst
+files, layout mirrored (xray_26.3.27/{xray,LICENSE,SOURCE.txt}).
+Probe-proven on the repackaged binary: hysteria2 inbound `Configuration OK`,
+hysteria2 outbound `Configuration OK` (version:2 required) — the
+OVERNIGHT-A5 hysteria-inout blocker (v24.12.31 "unknown config id") is
+closed. `masque` remains upstream-master-only (probe: unknown config id).
