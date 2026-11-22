@@ -1,0 +1,231 @@
+{
+ "core": "sing-box",
+ "upstream": "https://github.com/SagerNet/sing-box",
+ "license": "GPL-3.0",
+ "latest": "1.14.4",
+ "versions": [
+  {
+   "tag": "sing-box-v1.14.4",
+   "assets": {
+    "linux-amd64": {
+     "name": "sing-box-linux-amd64.tar.gz",
+     "sha256": "71b2d4a0ee1cea9a116ee944ebb9987295b823af78b562c9988f4e0b7b289c29"
+    },
+    "linux-arm64": {
+     "name": "sing-box-linux-arm64.tar.gz",
+     "sha256": "33152387648b22e8e13ae637f9c8e336c292c8260c13f7627a6c9e76c978a3de"
+    }
+   }
+  }
+ ],
+ "methods": [
+  {
+   "id": 1,
+   "name": "vless",
+   "title": "VLESS inbound/outbound (Reality/TLS)",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": false,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "proxy",
+   "overhead": 58
+  },
+  {
+   "id": 2,
+   "name": "vmess",
+   "title": "VMess inbound/outbound",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": false,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "proxy",
+   "overhead": 64
+  },
+  {
+   "id": 3,
+   "name": "trojan",
+   "title": "Trojan inbound/outbound",
+   "layer": "L4",
+   "transport": "tcp+tls",
+   "ipver": "both",
+   "needs_port": false,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "proxy",
+   "overhead": 58
+  },
+  {
+   "id": 4,
+   "name": "shadowsocks",
+   "title": "Shadowsocks inbound/outbound (tcp+udp relay)",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": false,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "proxy",
+   "overhead": 60
+  },
+  {
+   "id": 5,
+   "name": "hysteria2",
+   "title": "Hysteria2 inbound/outbound (QUIC)",
+   "layer": "L4",
+   "transport": "udp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "proxy",
+   "overhead": 72
+  },
+  {
+   "id": 6,
+   "name": "hysteria",
+   "title": "Hysteria v1 inbound/outbound (QUIC, legacy)",
+   "layer": "L4",
+   "transport": "udp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "proxy",
+   "overhead": 72
+  },
+  {
+   "id": 7,
+   "name": "tuic",
+   "title": "TUIC v5 inbound/outbound (QUIC)",
+   "layer": "L4",
+   "transport": "udp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "proxy",
+   "overhead": 70
+  },
+  {
+   "id": 8,
+   "name": "anytls",
+   "title": "AnyTLS inbound/outbound",
+   "layer": "L4",
+   "transport": "tcp+tls",
+   "ipver": "both",
+   "needs_port": false,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "proxy",
+   "overhead": 58
+  },
+  {
+   "id": 9,
+   "name": "shadowtls",
+   "title": "ShadowTLS v1-v3 inbound/outbound",
+   "layer": "L4",
+   "transport": "tcp+tls",
+   "ipver": "both",
+   "needs_port": false,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "obfuscation",
+   "overhead": 62
+  },
+  {
+   "id": 10,
+   "name": "ssh",
+   "title": "SSH outbound (tunnel over SSH)",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": false,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "proxy",
+   "overhead": 58
+  },
+  {
+   "id": 11,
+   "name": "snell",
+   "title": "Snell outbound",
+   "layer": "L4",
+   "transport": "tcp+tls",
+   "ipver": "both",
+   "needs_port": false,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "proxy",
+   "overhead": 58
+  },
+  {
+   "id": 12,
+   "name": "socks-http",
+   "title": "SOCKS4/4a/5 + HTTP ingress (local proxy entry)",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": false,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "ingress",
+   "overhead": 0
+  },
+  {
+   "id": 13,
+   "name": "wireguard",
+   "title": "WireGuard endpoint outbound/inbound (L3)",
+   "layer": "L3",
+   "transport": "udp",
+   "ipver": "both",
+   "needs_port": false,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "kernel-l3",
+   "overhead": 60
+  },
+  {
+   "id": 14,
+   "name": "openvpn",
+   "title": "OpenVPN outbound (OCServ-style)",
+   "layer": "L3",
+   "transport": "udp",
+   "ipver": "both",
+   "needs_port": false,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "proxy",
+   "overhead": 74
+  },
+  {
+   "id": 15,
+   "name": "tun",
+   "title": "TUN device inbound (gvisor/system stack)",
+   "layer": "L3",
+   "transport": "any",
+   "ipver": "both",
+   "needs_port": false,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tun",
+   "overhead": 0
+  },
+  {
+   "id": 16,
+   "name": "tailscale",
+   "title": "Tailscale outbound (DERP/WireGuard mesh)",
+   "layer": "L3",
+   "transport": "udp",
+   "ipver": "both",
+   "needs_port": false,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "mesh",
+   "overhead": 60
+  }
+ ]
+}

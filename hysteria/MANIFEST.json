@@ -1,0 +1,49 @@
+{
+ "core": "hysteria",
+ "upstream": "https://github.com/apernet/hysteria",
+ "license": "MIT",
+ "latest": "2.14.0",
+ "versions": [
+  {
+   "tag": "hysteria-v2.14.0",
+   "assets": {
+    "linux-amd64": {
+     "name": "hysteria-linux-amd64.tar.gz",
+     "sha256": "ef9270a5f10ce4a3868b52f10847ff8e249bed488d5e08eb5d1a78632aabbece"
+    },
+    "linux-arm64": {
+     "name": "hysteria-linux-arm64.tar.gz",
+     "sha256": "19c78f02c8210699435008bfa3a4b7ef9c686f151e4bb27125a1e56ee1b82732"
+    }
+   }
+  }
+ ],
+ "methods": [
+  {
+   "id": 1,
+   "name": "hysteria2",
+   "title": "Hysteria2 — QUIC-based bruteforce-resistant proxy (the v2 core protocol)",
+   "layer": "L4",
+   "transport": "udp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "proxy",
+   "overhead": 72
+  },
+  {
+   "id": 2,
+   "name": "salamander",
+   "title": "Salamander — QUIC obfuscation layer (password-encrypted, indistinguishable UDP)",
+   "layer": "L4",
+   "transport": "udp",
+   "ipver": "both",
+   "needs_port": false,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "obfuscation",
+   "overhead": 80
+  }
+ ]
+}
