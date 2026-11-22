@@ -1,21 +1,467 @@
 {
-  "core": "gost",
-  "upstream": "https://github.com/go-gost/gost",
-  "license": "MIT",
-  "latest": "3.3.3",
-  "versions": [
-    {
-      "tag": "gost-v3.3.3",
-      "assets": {
-        "linux-amd64": {
-          "name": "gost-linux-amd64.tar.gz",
-          "sha256": "ca03d2a2fda2bd5003c91ac3e41e365715b8d077b283ff81469c5ab413ce769a"
-        },
-        "linux-arm64": {
-          "name": "gost-linux-arm64.tar.gz",
-          "sha256": "37bafec8eb72fe69ba1cde56083389c2994a36c6e17874e8d5c1ce1a0b6a7ef2"
-        }
-      }
+ "core": "gost",
+ "upstream": "https://github.com/go-gost/gost",
+ "license": "MIT",
+ "latest": "3.3.3",
+ "versions": [
+  {
+   "tag": "gost-v3.3.3",
+   "assets": {
+    "linux-amd64": {
+     "name": "gost-linux-amd64.tar.gz",
+     "sha256": "ca03d2a2fda2bd5003c91ac3e41e365715b8d077b283ff81469c5ab413ce769a"
+    },
+    "linux-arm64": {
+     "name": "gost-linux-arm64.tar.gz",
+     "sha256": "37bafec8eb72fe69ba1cde56083389c2994a36c6e17874e8d5c1ce1a0b6a7ef2"
     }
-  ]
+   }
+  }
+ ],
+ "methods": [
+  {
+   "id": 1,
+   "name": "relay+tcp",
+   "title": "reverse tunnel via relay handler over plain TCP carrier",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 2,
+   "name": "relay+tls",
+   "title": "reverse tunnel via relay handler over TLS carrier",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 3,
+   "name": "relay+mtls",
+   "title": "reverse tunnel via relay handler over mutual-TLS carrier",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 4,
+   "name": "relay+ws",
+   "title": "reverse tunnel via relay handler over websocket carrier (our current driver shape relay+ws)",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 5,
+   "name": "relay+mws",
+   "title": "reverse tunnel via relay handler over muxed websocket carrier",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 6,
+   "name": "relay+dtls",
+   "title": "reverse tunnel via relay handler over DTLS (UDP) carrier",
+   "layer": "L4",
+   "transport": "udp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 7,
+   "name": "relay+quic",
+   "title": "reverse tunnel via relay handler over QUIC carrier",
+   "layer": "L4",
+   "transport": "udp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 8,
+   "name": "relay+http3",
+   "title": "reverse tunnel via relay handler over HTTP/3 carrier",
+   "layer": "L4",
+   "transport": "udp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 9,
+   "name": "relay+h3",
+   "title": "reverse tunnel via relay handler over HTTP/3 alias carrier",
+   "layer": "L4",
+   "transport": "udp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 10,
+   "name": "relay+wt",
+   "title": "reverse tunnel via relay handler over WebTransport carrier (http3)",
+   "layer": "L4",
+   "transport": "udp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 11,
+   "name": "relay+grpc",
+   "title": "reverse tunnel via relay handler over gRPC carrier",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 12,
+   "name": "relay+http2",
+   "title": "reverse tunnel via relay handler over HTTP/2 carrier (h2c)",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 13,
+   "name": "relay+h2",
+   "title": "reverse tunnel via relay handler over HTTP/2 over TLS carrier",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 14,
+   "name": "relay+kcp",
+   "title": "reverse tunnel via relay handler over KCP (smux over UDP) carrier",
+   "layer": "L4",
+   "transport": "udp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 15,
+   "name": "relay+icmp",
+   "title": "reverse tunnel via relay handler over raw ICMP echo carrier",
+   "layer": "L4",
+   "transport": "icmp",
+   "ipver": "both",
+   "needs_port": false,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 16,
+   "name": "relay+ftcp",
+   "title": "reverse tunnel via relay handler over fragmented-TCP carrier",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 17,
+   "name": "relay+ssh",
+   "title": "reverse tunnel via relay handler over SSH channel carrier",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 18,
+   "name": "relay+sshd",
+   "title": "reverse tunnel via relay handler over SSH remote-forward carrier",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 19,
+   "name": "relay+obfs-http",
+   "title": "reverse tunnel via relay handler over HTTP-obfuscated carrier",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 20,
+   "name": "relay+obfs-tls",
+   "title": "reverse tunnel via relay handler over TLS-obfuscated carrier",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 21,
+   "name": "relay+pht",
+   "title": "reverse tunnel via relay handler over Plain HTTP Tunnel carrier",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 22,
+   "name": "relay+utls",
+   "title": "reverse tunnel via relay handler over uTLS-fingerprinted TLS carrier",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 23,
+   "name": "rtcp",
+   "title": "reverse TCP port forwarding (public port on the server end)",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 24,
+   "name": "rudp",
+   "title": "reverse UDP port forwarding",
+   "layer": "L4",
+   "transport": "udp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 25,
+   "name": "ss",
+   "title": "shadowsocks listener+handler (ss-udp variant adds UDP relay)",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 26,
+   "name": "socks5",
+   "title": "SOCKS5 proxy service (mixed adds http)",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 27,
+   "name": "socks4",
+   "title": "SOCKS4 proxy service",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 28,
+   "name": "http-proxy",
+   "title": "HTTP proxy service",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 29,
+   "name": "forward-local",
+   "title": "local TCP port forwarding",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 30,
+   "name": "forward-remote",
+   "title": "remote port forwarding",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 31,
+   "name": "tun",
+   "title": "TUN device service (tungo = gvisor userspace variant)",
+   "layer": "L3",
+   "transport": "any",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 32,
+   "name": "tap",
+   "title": "TAP device service (L2 ethernet)",
+   "layer": "L2",
+   "transport": "any",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 33,
+   "name": "redirect-tcp",
+   "title": "transparent TCP proxy (iptables REDIRECT)",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 34,
+   "name": "redirect-udp",
+   "title": "transparent UDP proxy",
+   "layer": "L4",
+   "transport": "udp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 35,
+   "name": "sni",
+   "title": "SNI-dispatch proxy",
+   "layer": "L4",
+   "transport": "tcp+tls",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 36,
+   "name": "dns",
+   "title": "DNS forwarding service",
+   "layer": "L4",
+   "transport": "udp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 37,
+   "name": "masque",
+   "title": "MASQUE (CONNECT-UDP) service",
+   "layer": "L4",
+   "transport": "udp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  }
+ ]
 }

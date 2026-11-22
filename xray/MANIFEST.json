@@ -1,34 +1,240 @@
 {
-  "core": "xray",
-  "upstream": "https://github.com/XTLS/Xray-core",
-  "license": "MPL-2.0",
-  "latest": "26.3.27",
-  "versions": [
-    {
-      "tag": "xray-v26.3.27",
-      "assets": {
-        "linux-amd64": {
-          "name": "xray-linux-amd64.tar.gz",
-          "sha256": "68934f23069ded408b926fb253e079d874d97a88c9849946fa305f825555b533"
-        },
-        "linux-arm64": {
-          "name": "xray-linux-arm64.tar.gz",
-          "sha256": "7366d3e30e96a76a3448f69205624ae72b61b2acec649b44a34b558173ec8d53"
-        }
-      }
+ "core": "xray",
+ "upstream": "https://github.com/XTLS/Xray-core",
+ "license": "MPL-2.0",
+ "latest": "26.3.27",
+ "versions": [
+  {
+   "tag": "xray-v26.3.27",
+   "assets": {
+    "linux-amd64": {
+     "name": "xray-linux-amd64.tar.gz",
+     "sha256": "68934f23069ded408b926fb253e079d874d97a88c9849946fa305f825555b533"
     },
-    {
-      "tag": "xray-v24.12.31",
-      "assets": {
-        "linux-amd64": {
-          "name": "xray-linux-amd64.tar.gz",
-          "sha256": "b18b92c6bf39af7c639ec0667c8bceec76d0bbe478bd1b7d332b239a61e19a0f"
-        },
-        "linux-arm64": {
-          "name": "xray-linux-arm64.tar.gz",
-          "sha256": "6fd6a1979504fe1eba7bc664799caa41cd40308836e62954d09d83b68c1e6dc2"
-        }
-      }
+    "linux-arm64": {
+     "name": "xray-linux-arm64.tar.gz",
+     "sha256": "7366d3e30e96a76a3448f69205624ae72b61b2acec649b44a34b558173ec8d53"
     }
-  ]
+   }
+  },
+  {
+   "tag": "xray-v24.12.31",
+   "assets": {
+    "linux-amd64": {
+     "name": "xray-linux-amd64.tar.gz",
+     "sha256": "b18b92c6bf39af7c639ec0667c8bceec76d0bbe478bd1b7d332b239a61e19a0f"
+    },
+    "linux-arm64": {
+     "name": "xray-linux-arm64.tar.gz",
+     "sha256": "6fd6a1979504fe1eba7bc664799caa41cd40308836e62954d09d83b68c1e6dc2"
+    }
+   }
+  }
+ ],
+ "methods": [
+  {
+   "id": 1,
+   "name": "vless+tcp+reality",
+   "title": "our driver's current shape (vision flow disabled for mux)",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 2,
+   "name": "vless+xhttp+reality",
+   "title": "XHTTP stream transport under REALITY (reality supports raw/xhttp/grpc only)",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 3,
+   "name": "vless+grpc+reality",
+   "title": "gRPC carrier under REALITY (upstream-deprecated but functional)",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 4,
+   "name": "vless+tcp+tls",
+   "title": "VLESS over TLS (operator cert needed; reality preferred)",
+   "layer": "L4",
+   "transport": "tcp+tls",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 5,
+   "name": "vless+ws+tls",
+   "title": "websocket transport (upstream-deprecated, still common in Iran)",
+   "layer": "L4",
+   "transport": "tcp+tls",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 6,
+   "name": "vless+httpupgrade",
+   "title": "httpupgrade transport (deprecated)",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 7,
+   "name": "vless+mkcp",
+   "title": "mKCP carrier",
+   "layer": "L4",
+   "transport": "udp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 8,
+   "name": "vless+xhttp+tls",
+   "title": "XHTTP under TLS",
+   "layer": "L4",
+   "transport": "tcp+tls",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 9,
+   "name": "vmess+ws+tls",
+   "title": "VMess over websocket+TLS",
+   "layer": "L4",
+   "transport": "tcp+tls",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 10,
+   "name": "vmess+tcp+reality",
+   "title": "VMess over Reality (mux.cool inner)",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 11,
+   "name": "trojan+tcp+tls",
+   "title": "Trojan server",
+   "layer": "L4",
+   "transport": "tcp+tls",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 12,
+   "name": "shadowsocks",
+   "title": "shadowsocks inbound (tcp; udp relay optional)",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 13,
+   "name": "socks/http-in",
+   "title": "socks/mixed/http local proxies",
+   "layer": "L4",
+   "transport": "tcp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 14,
+   "name": "wireguard-inout",
+   "title": "wireguard endpoint inside xray",
+   "layer": "L3",
+   "transport": "udp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 15,
+   "name": "hysteria-inout",
+   "title": "hysteria protocol built in (both directions)",
+   "layer": "L4",
+   "transport": "udp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 16,
+   "name": "masque-inout",
+   "title": "MASQUE built in",
+   "layer": "L4",
+   "transport": "udp",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  },
+  {
+   "id": 17,
+   "name": "tun-in",
+   "title": "tun inbound (xray-side TUN)",
+   "layer": "L3",
+   "transport": "any",
+   "ipver": "both",
+   "needs_port": true,
+   "userspace": true,
+   "mikrotik": false,
+   "family": "tunnel"
+  }
+ ]
 }
